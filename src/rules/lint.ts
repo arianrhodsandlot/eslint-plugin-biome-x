@@ -1,16 +1,17 @@
 import { kebabCase, last } from 'es-toolkit'
+import type { Rule } from 'eslint'
 import { biome } from '../biome.js'
 
-function reportBiomeDiagnostics(context, diagnostic) {
+function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic) {
   const sourceCode = context.sourceCode ?? context.getSourceCode()
 
   const { category, description, location } = diagnostic
   const [startIndex, endIndex] = location.span
   context.report({
     data: {
+      biomeDocUrl: `https://biomejs.dev/linter/rules/${kebabCase(last(category.split('/')))}`,
       category,
       description: description.endsWith('.') ? description : `${description}.`,
-      biomeDocUrl: `https://biomejs.dev/linter/rules/${kebabCase(last(category.split('/')))}`,
     },
     loc: {
       end: sourceCode.getLocFromIndex(endIndex),
@@ -20,8 +21,7 @@ function reportBiomeDiagnostics(context, diagnostic) {
   })
 }
 
-/** @type {import('eslint').Rule.RuleModule} */
-export const lint = {
+export const lint: Rule.RuleModule = {
   meta: {
     fixable: 'code',
     messages: {

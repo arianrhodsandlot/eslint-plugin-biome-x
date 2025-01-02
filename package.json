@@ -13,8 +13,20 @@
     "email": "theguidanceofawhitetower@gmail.com"
   },
   "type": "module",
-  "main": "index.js",
+  "exports": {
+    "import": "./dist/esm/index.js",
+    "require": "./dist/umd/index.cjs",
+    "types": "./dist/types/index.d.ts"
+  },
+  "main": "dist/umd/index.cjs",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build:esm": "swc src -d dist/esm --strip-leading-paths",
+    "build:umd": "swc src -d dist/umd --strip-leading-paths -C module.type=umd --out-file-extension=cjs",
     "prepare": "simple-git-hooks",
     "test": "node --no-warnings --experimental-strip-types --test tests/**/*.test.ts"
   },
@@ -22,7 +34,7 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*.?(m|c)@(j|t)s?(x)": "node --run=eslint -- --fix",
+    "*.?(m|c)@(j|t)s?(x)": "eslint --fix",
     "package.json": "pnpm dlx sort-package-json"
   },
   "dependencies": {
@@ -35,10 +47,14 @@
   "devDependencies": {
     "@arianrhodsandlot/eslint-config": "0.16.3",
     "@arianrhodsandlot/release-kit": "0.1.4",
+    "@swc/cli": "0.5.2",
+    "@swc/core": "1.10.4",
+    "@tsconfig/node-lts": "22.0.1",
     "eslint": "9.17.0",
     "eslint-plugin-eslint-plugin": "6.4.0",
     "lint-staged": "15.3.0",
     "prettier": "3.4.2",
-    "simple-git-hooks": "2.11.1"
+    "simple-git-hooks": "2.11.1",
+    "typescript": "5.7.2"
   }
 }

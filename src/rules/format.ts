@@ -1,29 +1,30 @@
+import type { AST, Rule } from 'eslint'
 import { generateDifferences, showInvisibles } from 'prettier-linter-helpers'
 import { biome } from '../biome.js'
 
 const { DELETE, INSERT, REPLACE } = generateDifferences
 
-function reportDifference(context, difference) {
+function reportDifference(context: Rule.RuleContext, difference: any) {
   const sourceCode = context.sourceCode ?? context.getSourceCode()
 
   const { deleteText = '', insertText = '', offset, operation } = difference
-  const range = [offset, offset + deleteText.length]
-  const [start, end] = range.map((index) => sourceCode.getLocFromIndex(index))
+  const range: AST.Range = [offset, offset + deleteText.length]
+  const start = sourceCode.getLocFromIndex(range[0])
+  const end = sourceCode.getLocFromIndex(range[1])
   context.report({
     data: {
       deleteText: showInvisibles(deleteText),
       insertText: showInvisibles(insertText),
     },
     fix(fixer) {
-      fixer.replaceTextRange(range, insertText)
+      return fixer.replaceTextRange(range, insertText)
     },
     loc: { end, start },
     messageId: operation,
   })
 }
 
-/** @type {import('eslint').Rule.RuleModule} */
-export const format = {
+export const format: Rule.RuleModule = {
   meta: {
     fixable: 'code',
     messages: {
