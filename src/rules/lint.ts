@@ -12,6 +12,11 @@ function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnosti
     return
   }
 
+  const ruleName = last(category.split('/'))
+  if (!ruleName) {
+    return
+  }
+
   const [startIndex, endIndex] = location.span
   const advices = diagnostic.advices.advices
     .filter((advice) => 'log' in advice)
@@ -20,7 +25,7 @@ function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnosti
   context.report({
     data: {
       advices,
-      biomeDocUrl: `https://biomejs.dev/linter/rules/${kebabCase(last(category.split('/')))}`,
+      biomeDocUrl: `https://biomejs.dev/linter/rules/${kebabCase(ruleName)}`,
       category,
       description: description.endsWith('.') ? description : `${description}.`,
     },
