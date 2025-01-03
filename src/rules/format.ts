@@ -1,6 +1,7 @@
 import type { AST, Rule } from 'eslint'
 import { generateDifferences, showInvisibles } from 'prettier-linter-helpers'
 import { biome } from '../biome.js'
+import { getValidFilePath } from './utils.js'
 
 const { DELETE, INSERT, REPLACE } = generateDifferences
 
@@ -44,7 +45,7 @@ export const format: Rule.RuleModule = {
     return {
       Program() {
         const { content: formatedText } = biome.formatContent(sourceCodeText, {
-          filePath: filepath.endsWith('.js') ? filepath : 'file.js',
+          filePath: getValidFilePath(filepath),
         })
 
         if (sourceCodeText === formatedText) {

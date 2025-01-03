@@ -1,6 +1,6 @@
 import { describe, test } from 'node:test'
 import { RuleTester } from 'eslint'
-import plugin from '../../src/index.js'
+import plugin from '../../dist/esm/index.js'
 
 const ruleTester = new RuleTester()
 
@@ -9,14 +9,15 @@ describe('format', function () {
     ruleTester.run('format', plugin.rules.format, {
       valid: [
         {
-          code: 'var boolean = true\n',
+          code: 'var boolean = true;\n',
         },
       ],
 
       invalid: [
         {
           code: 'var boolean =  true',
-          errors: [{ message: 'Replace `·true` with `true⏎`' }],
+          errors: [{ message: 'Replace `·true` with `true;⏎`' }],
+          output: 'var boolean = true;\n',
         },
       ],
     })

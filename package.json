@@ -25,8 +25,11 @@
     "dist"
   ],
   "scripts": {
+    "build": "conc npm:build:* -c auto",
     "build:esm": "swc src -d dist/esm --strip-leading-paths",
-    "build:umd": "swc src -d dist/umd --strip-leading-paths -C module.type=umd --out-file-extension=cjs",
+    "build:types": "tsc --project tsconfig.src.json",
+    "build:umd": "swc src -d dist/umd --strip-leading-paths -C module.type=umd --out-file-extension=cjs && node --run=fix-umd",
+    "fix-umd": "find dist/umd -type f -exec sed -i '' 's/require(\"\\.\\([^\"]*\\)\\.js\")/require(\".\\1.cjs\")/g' {} +",
     "prepare": "simple-git-hooks",
     "test": "node --no-warnings --experimental-strip-types --test tests/**/*.test.ts"
   },
@@ -40,9 +43,11 @@
   "dependencies": {
     "@biomejs/js-api": "0.7.1",
     "@biomejs/wasm-nodejs": "1.9.4",
-    "c12": "2.0.1",
+    "cosmiconfig": "9.0.0",
     "es-toolkit": "1.31.0",
-    "prettier-linter-helpers": "1.0.0"
+    "eslint-config-prettier": "9.1.0",
+    "prettier-linter-helpers": "1.0.0",
+    "synckit": "0.9.2"
   },
   "devDependencies": {
     "@arianrhodsandlot/eslint-config": "0.16.3",
@@ -50,6 +55,9 @@
     "@swc/cli": "0.5.2",
     "@swc/core": "1.10.4",
     "@tsconfig/node-lts": "22.0.1",
+    "@types/eslint-config-prettier": "6.11.3",
+    "@types/node": "22.10.4",
+    "concurrently": "9.1.2",
     "eslint": "9.17.0",
     "eslint-plugin-eslint-plugin": "6.4.0",
     "lint-staged": "15.3.0",
