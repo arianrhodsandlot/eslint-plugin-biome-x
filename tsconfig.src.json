@@ -2,6 +2,9 @@
   "extends": "@tsconfig/node-lts",
   "compilerOptions": {
     "outDir": "./dist/types",
+    "module": "Preserve",
+    "allowImportingTsExtensions": true,
+    "moduleResolution": "bundler",
     "declaration": true,
     "emitDeclarationOnly": true,
     "noImplicitAny": false

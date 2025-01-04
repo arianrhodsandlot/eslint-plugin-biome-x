@@ -1,6 +1,6 @@
-import { format } from './format.js'
-import { lint } from './lint.js'
-import { recommended } from './recommended.js'
+import { format } from './format.ts'
+import { lint } from './lint.ts'
+import { recommended } from './recommended.ts'
 
 export const configs = {
   format,

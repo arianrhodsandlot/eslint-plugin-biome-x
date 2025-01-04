@@ -1,4 +1,4 @@
-import { plugin } from '../plugin.js'
+import { plugin } from '../plugin.ts'
 
 const name = 'biome-x'
 export const lint = [

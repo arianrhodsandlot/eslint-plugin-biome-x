@@ -1,7 +1,7 @@
 import type { AST, Rule } from 'eslint'
 import { generateDifferences, showInvisibles } from 'prettier-linter-helpers'
-import { biome } from '../biome.js'
-import { getValidFilePath } from './utils.js'
+import { biome } from '../biome.ts'
+import { getValidFilePath } from './utils.ts'
 
 const { DELETE, INSERT, REPLACE } = generateDifferences
 

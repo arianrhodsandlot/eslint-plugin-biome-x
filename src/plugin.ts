@@ -1,4 +1,4 @@
-import { meta } from './meta.js'
-import { rules } from './rules/index.js'
+import { meta } from './meta.ts'
+import { rules } from './rules/index.ts'
 
 export const plugin = { meta, rules }

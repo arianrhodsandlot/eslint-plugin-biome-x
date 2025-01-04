@@ -1,4 +1,4 @@
-import { configs } from './configs/index.js'
-import { plugin } from './plugin.js'
+import { configs } from './configs/index.ts'
+import { plugin } from './plugin.ts'
 
 export default { ...plugin, configs }

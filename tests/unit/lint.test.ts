@@ -1,6 +1,6 @@
 import { describe, test } from 'node:test'
 import { RuleTester } from 'eslint'
-import plugin from '../../dist/esm/index.js'
+import plugin from '../../src/index.ts'
 
 const ruleTester = new RuleTester()
 

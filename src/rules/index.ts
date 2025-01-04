@@ -1,5 +1,5 @@
-import { format } from './format.js'
-import { lint } from './lint.js'
+import { format } from './format.ts'
+import { lint } from './lint.ts'
 
 export const rules = {
   format,

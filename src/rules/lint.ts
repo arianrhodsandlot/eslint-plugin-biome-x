@@ -1,8 +1,8 @@
 import type { Diagnostic } from '@biomejs/js-api'
 import { kebabCase, last } from 'es-toolkit'
 import type { Rule } from 'eslint'
-import { biome } from '../biome.js'
-import { getValidFilePath } from './utils.js'
+import { biome } from '../biome.ts'
+import { getValidFilePath } from './utils.ts'
 
 function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnostic) {
   const sourceCode = context.sourceCode ?? context.getSourceCode()
