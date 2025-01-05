@@ -41,15 +41,18 @@ The structure of the configuration is listed on the [configuration reference of 
 - Rule options
 
 ## Rules
-| Name | Description |
-| :-- | :-- |
-| format | Enforce the code to follow the style introduced by `biome format`. |
-| lint | Report errors raised by `biome lint`. |
+💼 Configurations enabled in.
+✅ Set in the recommended configuration.
+🔧 Automatically fixable by the --fix CLI option.
+| Name | Description | 💼 | 🔧 |
+| :-- | :-- | :-- | :-- |
+| format | Enforce the code to follow the style introduced by `biome format`. | ✅ | 🔧 |
+| lint | Report errors raised by `biome lint`. | ✅ | |
 
 ## Credits
 - [@biomejs/js-api](https://github.com/biomejs/biome/tree/main/packages/%40biomejs/js-api)
-  We use this
+  We utilize the JavaScript APIs of Biome exposed by this package.
 - [eslint-plugin-prettier](https://github.com/prettier/eslint-plugin-prettier)
-
+  The implementation of the format rule is hightly inspired by the source code of eslint-plugin-prettier.
 ## License
 [MIT](license)
