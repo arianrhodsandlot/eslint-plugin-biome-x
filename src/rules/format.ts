@@ -1,6 +1,7 @@
+import { merge } from 'es-toolkit'
 import type { AST, Rule } from 'eslint'
 import { generateDifferences, showInvisibles } from 'prettier-linter-helpers'
-import { biome } from '../biome.ts'
+import { getBiome } from '../biome.ts'
 import { getValidFilePath } from './utils.ts'
 
 const { DELETE, INSERT, REPLACE } = generateDifferences
@@ -33,7 +34,7 @@ export const format: Rule.RuleModule = {
       [INSERT]: 'Insert `{{ insertText }}`',
       [REPLACE]: 'Replace `{{ deleteText }}` with `{{ insertText }}`',
     },
-    schema: [],
+    schema: [{ required: false, type: 'object' }],
     type: 'layout',
   },
 
@@ -41,6 +42,8 @@ export const format: Rule.RuleModule = {
     const sourceCode = context.sourceCode ?? context.getSourceCode()
     const filepath = context.filename ?? context.getFilename()
     const sourceCodeText = sourceCode.text
+    const config = merge(merge({}, context.settings.biome || {}), context.options[0] || {})
+    const biome = getBiome(config)
 
     return {
       Program() {

@@ -29,6 +29,9 @@
     "build:cjs": "node --run=esbuild -- --outfile=dist/eslint-plugin-biome-x.cjs",
     "build:esm": "node --run=esbuild -- --format=esm --outfile=dist/eslint-plugin-biome-x.mjs",
     "build:types": "tsc --project tsconfig.src.json",
+    "dev": "conc npm:dev:* -c auto",
+    "dev:cjs": "node --run=build:cjs -- --watch",
+    "dev:esm": "node --run=build:esm -- --watch",
     "esbuild": "esbuild src/index.ts --bundle --platform=node --packages=external --target=node18 --minify",
     "prepare": "simple-git-hooks",
     "test": "node --no-warnings --experimental-strip-types --test tests/**/*.test.ts"

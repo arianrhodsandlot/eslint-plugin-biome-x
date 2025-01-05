@@ -1,4 +1,4 @@
-import { Biome } from '@biomejs/js-api'
+import { Biome, type Configuration } from '@biomejs/js-api'
 import module from '@biomejs/wasm-nodejs'
 import { cosmiconfigSync } from 'cosmiconfig'
 import { merge } from 'es-toolkit'
@@ -26,17 +26,30 @@ const searchPlaces = [
   `${moduleName}.config.cjs`,
 ]
 
-function getBiome(inlineConfig = {}) {
-  module.main()
-  const workspace = new module.Workspace()
+const globalConfig = cosmiconfigSync(moduleName, { searchPlaces }).search()?.config || {}
+const biomeInstanceCache = {}
+
+module.main()
+const workspace = new module.Workspace()
+
+export function getBiome(localConfig: Configuration = {}) {
+  let cachekey = ''
+  try {
+    cachekey = JSON.stringify(localConfig)
+    if (cachekey in biomeInstanceCache) {
+      return biomeInstanceCache[cachekey]
+    }
+  } catch {}
+
   // @ts-expect-error This is the only way to create a Biome instance synchronously
   const biome: Biome = new Biome(module, workspace)
   biome.registerProjectFolder()
-
-  const defaultConfig = cosmiconfigSync(moduleName, { searchPlaces }).search()?.config || {}
-  const config = merge(defaultConfig, inlineConfig)
+  const config = merge(globalConfig, localConfig)
   biome.applyConfiguration(config)
+
+  if (cachekey) {
+    biomeInstanceCache[cachekey] = biome
+  }
+
   return biome
 }
-
-export const biome = getBiome()
