@@ -4,7 +4,7 @@ import plugin from '../../src/index.ts'
 
 const ruleTester = new RuleTester()
 
-describe('lint', function () {
+describe('lint', () => {
   test('lint', () => {
     ruleTester.run('lint', plugin.rules.lint, {
       valid: [

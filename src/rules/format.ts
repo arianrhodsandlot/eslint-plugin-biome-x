@@ -34,7 +34,7 @@ export const format: Rule.RuleModule = {
       [INSERT]: 'Insert `{{ insertText }}`',
       [REPLACE]: 'Replace `{{ deleteText }}` with `{{ insertText }}`',
     },
-    schema: [{ required: false, type: 'object' }],
+    schema: [{ type: 'object' }],
     type: 'layout',
   },
 

@@ -34,7 +34,8 @@
     "dev:esm": "node --run=build:esm -- --watch",
     "esbuild": "esbuild src/index.ts --bundle --platform=node --packages=external --target=node18 --minify",
     "prepare": "simple-git-hooks",
-    "test": "node --no-warnings --experimental-strip-types --test tests/**/*.test.ts"
+    "test:e2e": "node --no-warnings --experimental-strip-types --test tests/e2e/**/*.test.ts",
+    "test:unit": "node --no-warnings --experimental-strip-types --test tests/unit/**/*.test.ts"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
@@ -66,6 +67,7 @@
     "lint-staged": "15.3.0",
     "prettier": "3.4.2",
     "simple-git-hooks": "2.11.1",
-    "typescript": "5.7.2"
+    "typescript": "5.7.2",
+    "zx": "8.3.0"
   }
 }

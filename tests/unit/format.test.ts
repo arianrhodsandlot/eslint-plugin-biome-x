@@ -4,7 +4,7 @@ import plugin from '../../src/index.ts'
 
 const ruleTester = new RuleTester()
 
-describe('format', function () {
+describe('format', () => {
   test('format', () => {
     ruleTester.run('format', plugin.rules.format, {
       valid: [

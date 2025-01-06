@@ -42,7 +42,7 @@ export const lint: Rule.RuleModule = {
     messages: {
       lint: ['{{ description }}', '{{ advices }}', 'See {{ biomeDocUrl }} .'].join('\n'),
     },
-    schema: [{ required: false, type: 'object' }],
+    schema: [{ type: 'object' }],
     type: 'problem',
   },
 
