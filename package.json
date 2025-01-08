@@ -1,10 +1,13 @@
 {
   "name": "eslint-plugin-biome-x",
-  "description": "",
+  "description": "An ESLint plugin to integrate Biome into ESLint",
   "keywords": [
+    "biome",
+    "biomejs",
+    "eslint-config",
+    "eslint-plugin",
     "eslint",
-    "eslintplugin",
-    "eslint-plugin"
+    "eslintplugin"
   ],
   "license": "MIT",
   "author": {
