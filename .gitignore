@@ -1,2 +1,3 @@
 dist
+tests/e2e/files
 tests/e2e/files-*

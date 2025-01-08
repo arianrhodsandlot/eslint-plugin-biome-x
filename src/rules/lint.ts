@@ -21,7 +21,7 @@ function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnosti
   const advices = diagnostic.advices.advices
     .filter((advice) => 'log' in advice)
     .flatMap((advice) => advice.log[1].map(({ content }) => content))
-    .join('\n')
+    .join(' ')
   context.report({
     data: {
       advices,
@@ -40,7 +40,9 @@ function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnosti
 export const lint: Rule.RuleModule = {
   meta: {
     messages: {
-      lint: ['{{ description }}', '{{ advices }}', 'See {{ biomeDocUrl }} .'].join('\n'),
+      lint: ['{{ description }}', '{{ advices }}', 'See {{ biomeDocUrl }} .']
+        .join(process.env.VSCODE_PID ? '\n' : ' ')
+        .replaceAll(/\s+/g, ' '),
     },
     schema: [{ type: 'object' }],
     type: 'problem',

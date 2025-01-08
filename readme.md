@@ -50,9 +50,7 @@ export default {
 
 If it does not fit your need, there are several ways of configuring `eslint-plugin-biome-x`. If you set you configuration in more than one place, they will be deeply merged.
 
-The structure of the configuration is listed on the [configuration reference of Biome](https://biomejs.dev/reference/configuration/).
-
-- `biome.json`
+- `biome.json` in your project's root directory.
 - `biome` field in the `package.json`
   ```json5
   {
@@ -90,6 +88,8 @@ The structure of the configuration is listed on the [configuration reference of 
     }
   }]
   ```
+
+The structure of the configuration can be found on [the configuration reference of Biome](https://biomejs.dev/reference/configuration/).
 
 ## Rules
 💼 Configurations enabled in.\
