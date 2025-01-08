@@ -50,7 +50,7 @@ export default {
 
 If it does not fit your need, there are several ways of configuring `eslint-plugin-biome-x`. If you set you configuration in more than one place, they will be deeply merged.
 
-- `biome.json` in your project's root directory.
+- `biome.json` in your project's root directory
 - `biome` field in the `package.json`
   ```json5
   {
@@ -60,11 +60,11 @@ If it does not fit your need, there are several ways of configuring `eslint-plug
     }
   }
   ```
-- `settings.biome` field in the ESLint config file
+- `settings['biome-x']` field in the ESLint config file
   ```js
   export default [{
     settings: {
-      biome: {
+      'biome-x': {
         // your configuration goes here
       }
     }
