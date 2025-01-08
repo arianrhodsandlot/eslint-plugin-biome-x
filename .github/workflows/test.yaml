@@ -1,0 +1,11 @@
+name: test
+on:
+  push:
+    branches: main
+    tags-ignore:
+      - '*'
+  pull_request:
+    branches: main
+jobs:
+  test:
+    uses: ./.github/workflows/test-jobs.yaml
