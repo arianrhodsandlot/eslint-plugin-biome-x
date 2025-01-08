@@ -70,5 +70,6 @@
     "simple-git-hooks": "2.11.1",
     "typescript": "5.7.2",
     "zx": "8.3.0"
-  }
+  },
+  "packageManager": "pnpm@9.15.3"
 }
