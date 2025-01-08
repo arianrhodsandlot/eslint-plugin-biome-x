@@ -57,6 +57,9 @@ importers:
       eslint-plugin-eslint-plugin:
         specifier: 6.4.0
         version: 6.4.0(eslint@9.17.0(jiti@2.4.2))
+      jiti:
+        specifier: 2.4.2
+        version: 2.4.2
       lint-staged:
         specifier: 15.3.0
         version: 15.3.0
@@ -5949,8 +5952,7 @@ snapshots:
 
   jiti@1.21.7: {}
 
-  jiti@2.4.2:
-    optional: true
+  jiti@2.4.2: {}
 
   jju@1.4.0: {}
 
