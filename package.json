@@ -1,6 +1,5 @@
 {
   "name": "eslint-plugin-biome-x",
-  "version": "1.0.0",
   "description": "",
   "keywords": [
     "eslint",
@@ -34,6 +33,7 @@
     "dev:esm": "node --run=build:esm -- --watch",
     "esbuild": "esbuild src/index.ts --bundle --platform=node --packages=external --target=node18 --minify",
     "prepare": "simple-git-hooks",
+    "test": "conc npm:test:* -c auto",
     "test:e2e": "node --no-warnings --experimental-strip-types --test tests/e2e/**/*.test.ts",
     "test:unit": "node --no-warnings --experimental-strip-types --test tests/unit/**/*.test.ts"
   },
@@ -56,8 +56,6 @@
   "devDependencies": {
     "@arianrhodsandlot/eslint-config": "0.16.4",
     "@arianrhodsandlot/release-kit": "0.1.4",
-    "@swc/cli": "0.5.2",
-    "@swc/core": "1.10.4",
     "@tsconfig/node-lts": "22.0.1",
     "@types/eslint-config-prettier": "6.11.3",
     "@types/node": "22.10.5",
