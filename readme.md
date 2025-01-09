@@ -29,7 +29,7 @@ npm i eslint-plugin-biome-x
 ## Usage
 We use ESM format to demonstrate the usage, but if your project does not specify `"type": "module"` in its `package.json` file, then the config file must be in CommonJS format.
 
-### Flat config ([`eslint.config.js`, require ESLint `>=8.56.0`](https://eslint.org/docs/latest/use/configure/configuration-files))
+### Flat config ([`eslint.config.js`](https://eslint.org/docs/latest/use/configure/configuration-files), require ESLint `>=8.56.0`)
 ```js
 import eslintBiomeX from 'eslint-plugin-biome-x'
 
@@ -38,7 +38,7 @@ export default [
 ]
 ```
 
-### Legacy config ([`.eslintrc.js`, not recommended as it has been deprecated since ESLint 9.0.0](https://eslint.org/docs/latest/use/configure/configuration-files-deprecated))
+### Legacy config ([`.eslintrc.js`](https://eslint.org/docs/latest/use/configure/configuration-files-deprecated), not recommended as it has been deprecated since ESLint 9.0.0)
 ```js
 export default {
   extends: ['plugin:biome-x/recommended-legacy'],
@@ -65,7 +65,9 @@ If it does not fit your need, there are several ways of configuring `eslint-plug
   export default [{
     settings: {
       'biome-x': {
-        // your configuration goes here
+        biomeConfig: {
+          // your configuration goes here
+        }
       }
     }
   }]
@@ -103,7 +105,7 @@ The structure of the configuration can be found on [the configuration reference 
 | lint | Report errors raised by `biome lint`. | ✅ | | |
 
 ## Downsides
-- `eslint-plugin-biome-x` uses [@biomejs/js-api](https://www.npmjs.com/package/@biomejs/js-api) under the hood, it's now a lot slower than running native Biome command.
+- `eslint-plugin-biome-x` uses [@biomejs/js-api](https://www.npmjs.com/package/@biomejs/js-api) under the hood, which is now a lot slower than running native Biome command.
 - As of now, autofix functionality of `biome lint` is not usable when using `eslint-plugin-biome-x`. `eslint-plugin-biome-x` only reports errors raised by Biome.
 
 ## Credits

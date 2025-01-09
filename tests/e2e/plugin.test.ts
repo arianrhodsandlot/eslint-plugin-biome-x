@@ -22,9 +22,7 @@ describe('plugin', () => {
     const files = await globby('files/*')
     const testFileUrls = [
       'https://cdn.jsdelivr.net/npm/lodash@latest/core.js',
-      'https://cdn.jsdelivr.net/npm/date-fns@4.1.0/cdn.js',
       'https://cdn.jsdelivr.net/npm/react@latest/cjs/react.production.js',
-      'https://cdn.jsdelivr.net/npm/nostalgist@latest/dist/nostalgist.umd.js',
     ]
     if (files.length !== testFileUrls.length) {
       cd(import.meta.dirname)

@@ -52,7 +52,7 @@ export const lint: Rule.RuleModule = {
     const sourceCode = context.sourceCode ?? context.getSourceCode()
     const filepath = context.filename ?? context.getFilename()
     const sourceCodeText = sourceCode.text
-    const config = merge(merge({}, context.settings['biome-x'] || {}), context.options[0] || {})
+    const config = merge(merge({}, context.settings['biome-x']?.biomeConfig || {}), context.options[0] || {})
     const biome = getBiome(config)
 
     return {
