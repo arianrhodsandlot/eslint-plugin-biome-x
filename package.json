@@ -39,8 +39,8 @@
     "lint": "node --run=eslint -- src",
     "prepare": "simple-git-hooks",
     "test": "conc npm:test:* -c auto",
-    "test:e2e": "node --no-warnings --experimental-strip-types --test tests/e2e/**/*.test.ts",
-    "test:unit": "node --no-warnings --experimental-strip-types --test tests/unit/**/*.test.ts"
+    "test:e2e": "node --no-warnings --test tests/e2e/**/*.test.ts",
+    "test:unit": "node --no-warnings --test tests/unit/**/*.test.ts"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
