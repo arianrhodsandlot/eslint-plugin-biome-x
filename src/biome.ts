@@ -23,7 +23,17 @@ function getDefaultConfig() {
   }
 }
 
-export function getBiome(localConfig: Configuration = {}) {
+export function getBiome(
+  eslintSetting: { biomeConfig?: Configuration; biomeInstance?: Biome } = {},
+  eslintRuleOptions: any[] = [],
+) {
+  if (eslintSetting.biomeInstance) {
+    return eslintSetting.biomeInstance
+  }
+
+  const [inlineConfig] = eslintRuleOptions
+  const localConfig = merge({}, eslintSetting.biomeConfig, inlineConfig)
+
   let cachekey = ''
   try {
     cachekey = JSON.stringify(localConfig)
