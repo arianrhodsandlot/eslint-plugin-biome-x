@@ -33,7 +33,7 @@ function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic
     return
   }
 
-  const formatDiagnostics = context.settings[pluginName].diagnosticFormatter || defaultDiagnosticFormatter
+  const formatDiagnostics = context.settings[pluginName]?.diagnosticFormatter || defaultDiagnosticFormatter
   const message = formatDiagnostics(diagnostic)
   const [start, end] = location.span.map((index) => sourceCode.getLocFromIndex(index))
   context.report({

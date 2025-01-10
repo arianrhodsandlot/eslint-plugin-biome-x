@@ -9,6 +9,13 @@
     "eslint",
     "eslintplugin"
   ],
+  "bugs": {
+    "url": "https://github.com/arianrhodsandlot/eslint-plugin-biome-x/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arianrhodsandlot/eslint-plugin-biome-x.git"
+  },
   "license": "MIT",
   "author": {
     "name": "arianrhodsandlot",
