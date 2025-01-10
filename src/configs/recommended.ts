@@ -1,13 +1,13 @@
+import { pluginName } from '../constants.ts'
 import { plugin } from '../plugin.ts'
 import { conflicts } from './conflicts.ts'
 
-const name = 'biome-x'
 export const recommended = {
-  name: `${name}:recommended`,
-  plugins: { [name]: plugin },
+  name: `${pluginName}:recommended`,
+  plugins: { [pluginName]: plugin },
   rules: {
-    [`${name}/format`]: 'warn',
-    [`${name}/lint`]: 'error',
+    [`${pluginName}/format`]: 'warn',
+    [`${pluginName}/lint`]: 'error',
     ...conflicts,
   },
 }

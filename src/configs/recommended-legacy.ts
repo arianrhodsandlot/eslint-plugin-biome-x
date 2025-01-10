@@ -1,12 +1,12 @@
 import { pluginName } from '../constants.ts'
-import { plugin } from '../plugin.ts'
 import { conflicts } from './conflicts.ts'
 
-export const format = {
-  name: `${pluginName}:format`,
-  plugins: { [pluginName]: plugin },
+export const recommendedLegacy = {
+  extends: [pluginName],
+  plugins: [pluginName],
   rules: {
     [`${pluginName}/format`]: 'warn',
+    [`${pluginName}/lint`]: 'error',
     ...conflicts,
   },
 }

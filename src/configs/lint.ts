@@ -1,12 +1,12 @@
+import { pluginName } from '../constants.ts'
 import { plugin } from '../plugin.ts'
 
-const name = 'biome-x'
 export const lint = [
   {
-    name: `${name}:lint`,
-    plugins: { [name]: plugin },
+    name: `${pluginName}:lint`,
+    plugins: { [pluginName]: plugin },
     rules: {
-      [`${name}/lint`]: 'error',
+      [`${pluginName}/lint`]: 'error',
     },
   },
 ]

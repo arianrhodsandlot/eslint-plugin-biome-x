@@ -2,6 +2,7 @@ import { merge } from 'es-toolkit/compat'
 import type { AST, Rule } from 'eslint'
 import { generateDifferences, showInvisibles } from 'prettier-linter-helpers'
 import { getBiome } from '../biome.ts'
+import { pluginName } from '../constants.ts'
 import { getValidFilePath } from './utils.ts'
 
 const { DELETE, INSERT, REPLACE } = generateDifferences
@@ -42,7 +43,7 @@ export const format: Rule.RuleModule = {
     const sourceCode = context.sourceCode ?? context.getSourceCode()
     const filepath = context.filename ?? context.getFilename()
     const sourceCodeText = sourceCode.text
-    const config = merge({}, context.settings['biome-x']?.biomeConfig || {}, context.options[0] || {})
+    const config = merge({}, context.settings[pluginName]?.biomeConfig || {}, context.options[0] || {})
     const biome = getBiome(config)
 
     return {

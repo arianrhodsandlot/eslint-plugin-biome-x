@@ -2,6 +2,7 @@ import type { Diagnostic } from '@biomejs/js-api'
 import { kebabCase, last, merge } from 'es-toolkit'
 import type { Rule } from 'eslint'
 import { getBiome } from '../biome.ts'
+import { pluginName } from '../constants.ts'
 import { getValidFilePath } from './utils.ts'
 
 function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnostic) {
@@ -52,7 +53,7 @@ export const lint: Rule.RuleModule = {
     const sourceCode = context.sourceCode ?? context.getSourceCode()
     const filepath = context.filename ?? context.getFilename()
     const sourceCodeText = sourceCode.text
-    const config = merge(merge({}, context.settings['biome-x']?.biomeConfig || {}), context.options[0] || {})
+    const config = merge(merge({}, context.settings[pluginName]?.biomeConfig || {}), context.options[0] || {})
     const biome = getBiome(config)
 
     return {
