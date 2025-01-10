@@ -37,7 +37,7 @@ importers:
         specifier: 0.1.4
         version: 0.1.4
       '@biomejs/biome':
-        specifier: ^1.9.4
+        specifier: 1.9.4
         version: 1.9.4
       '@tsconfig/node-lts':
         specifier: 22.0.1
