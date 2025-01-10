@@ -5,10 +5,22 @@ import { getBiome } from '../biome.ts'
 import { pluginName } from '../constants.ts'
 import { getValidFilePath } from './utils.ts'
 
-function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnostic) {
+const spacer = process.env.VSCODE_PID ? '\n' : ' '
+
+function defaultDiagnosticFormatter(diagnostic: Diagnostic) {
+  const advices = diagnostic.advices.advices
+    .filter((advice) => 'log' in advice)
+    .map((advice) => advice.log[1].map(({ content }) => content).join(''))
+    .join(spacer)
+  const biomeDocUrl = `https://biomejs.dev/linter/rules/${kebabCase(ruleName)}`
+  const message = [diagnostic.description, advices, `See ${biomeDocUrl} for more explanation.`].join(spacer)
+  return message
+}
+
+function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic) {
   const sourceCode = context.sourceCode ?? context.getSourceCode()
 
-  const { category, description, location } = diagnostic
+  const { category, location } = diagnostic
   if (!(category && location.span)) {
     return
   }
@@ -18,33 +30,19 @@ function reportBiomeDiagnostics(context: Rule.RuleContext, diagnostic: Diagnosti
     return
   }
 
-  const [startIndex, endIndex] = location.span
-  const advices = diagnostic.advices.advices
-    .filter((advice) => 'log' in advice)
-    .flatMap((advice) => advice.log[1].map(({ content }) => content))
-    .join(' ')
+  const formatDiagnostics = context.settings[pluginName].diagnosticFormatter || defaultDiagnosticFormatter
+  const message = formatDiagnostics(diagnostic)
+  const [start, end] = location.span.map((index) => sourceCode.getLocFromIndex(index))
   context.report({
-    data: {
-      advices,
-      biomeDocUrl: `https://biomejs.dev/linter/rules/${kebabCase(ruleName)}`,
-      category,
-      description: description.endsWith('.') ? description : `${description}.`,
-    },
-    loc: {
-      end: sourceCode.getLocFromIndex(endIndex),
-      start: sourceCode.getLocFromIndex(startIndex),
-    },
+    data: { message },
+    loc: { end, start },
     messageId: 'lint',
   })
 }
 
 export const lint: Rule.RuleModule = {
   meta: {
-    messages: {
-      lint: ['{{ description }}', '{{ advices }}', 'See {{ biomeDocUrl }} .']
-        .join(process.env.VSCODE_PID ? '\n' : ' ')
-        .replaceAll(/\s+/g, ' '),
-    },
+    messages: { lint: '{{ message }}' },
     schema: [{ type: 'object' }],
     type: 'problem',
   },
@@ -62,7 +60,7 @@ export const lint: Rule.RuleModule = {
         })
 
         for (const diagnostic of diagnostics) {
-          reportBiomeDiagnostics(context, diagnostic)
+          reportBiomeDiagnostic(context, diagnostic)
         }
       },
     }

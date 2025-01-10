@@ -151,6 +151,29 @@ The structure of the configuration can be found on [the configuration reference 
   ]
   ```
 
+- `diagnosticFormatter`
+
+  A function used for formatting [diagnostics](https://biomejs.dev/reference/diagnostics/) reported by Biome as the corresponding ESLint error messages.
+
+  Example:
+  ```js
+  // eslint.config.js
+  import eslintBiomeX from 'eslint-plugin-biome-x'
+
+  export default [
+    eslintBiomeX.configs.recommended,
+    {
+      settings: {
+        'biome-x': {
+          diagnosticFormatter(diagnostic) {
+            return diagnostic.category || 'unknown error'
+          },
+        },
+      },
+    },
+  ]
+  ```
+
 ## Downsides
 - `eslint-plugin-biome-x` uses [@biomejs/js-api](https://www.npmjs.com/package/@biomejs/js-api) under the hood, which is now a lot slower than running native Biome command.
 - As of now, autofix functionality of `biome lint` is not usable when using `eslint-plugin-biome-x`. `eslint-plugin-biome-x` only reports errors raised by Biome.
