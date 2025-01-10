@@ -8,6 +8,14 @@ import { getValidFilePath } from './utils.ts'
 const spacer = process.env.VSCODE_PID ? '\n' : ' '
 
 function defaultDiagnosticFormatter(diagnostic: Diagnostic) {
+  if (!diagnostic.category) {
+    throw new Error('Invalid diagnostic')
+  }
+  const ruleName = last(diagnostic.category.split('/'))
+  if (!ruleName) {
+    throw new Error('Invalid diagnostic')
+  }
+
   const advices = diagnostic.advices.advices
     .filter((advice) => 'log' in advice)
     .map((advice) => advice.log[1].map(({ content }) => content).join(''))
@@ -22,11 +30,6 @@ function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic
 
   const { category, location } = diagnostic
   if (!(category && location.span)) {
-    return
-  }
-
-  const ruleName = last(category.split('/'))
-  if (!ruleName) {
     return
   }
 

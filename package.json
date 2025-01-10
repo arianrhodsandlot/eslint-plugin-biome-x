@@ -14,7 +14,6 @@
     "name": "arianrhodsandlot",
     "email": "theguidanceofawhitetower@gmail.com"
   },
-  "type": "module",
   "exports": {
     "types": "./dist/types/index.d.ts",
     "import": "./dist/eslint-plugin-biome-x.mjs",
@@ -28,13 +27,13 @@
   ],
   "scripts": {
     "build": "conc npm:build:* -c auto",
-    "build:cjs": "node --run=esbuild -- --outfile=dist/eslint-plugin-biome-x.cjs",
-    "build:esm": "node --run=esbuild -- --format=esm --outfile=dist/eslint-plugin-biome-x.mjs",
+    "build:cjs": "node --run=esbuild -- src/index.cts --outfile=dist/eslint-plugin-biome-x.cjs",
+    "build:esm": "node --run=esbuild -- src/index.ts --format=esm --outfile=dist/eslint-plugin-biome-x.mjs",
     "build:types": "tsc --project tsconfig.src.json",
     "dev": "conc npm:dev:* -c auto",
     "dev:cjs": "node --run=build:cjs -- --watch",
     "dev:esm": "node --run=build:esm -- --watch",
-    "esbuild": "esbuild src/index.ts --bundle --platform=node --packages=external --target=node18 --minify",
+    "esbuild": "esbuild --bundle --platform=node --packages=external --target=node18",
     "eslint": "eslint --flag unstable_ts_config --no-warn-ignored",
     "lint": "node --run=eslint -- src",
     "prepare": "simple-git-hooks",
@@ -59,7 +58,7 @@
     "synckit": "0.9.2"
   },
   "devDependencies": {
-    "@arianrhodsandlot/eslint-config": "0.16.4",
+    "@arianrhodsandlot/eslint-config": "0.16.8",
     "@arianrhodsandlot/release-kit": "0.1.4",
     "@biomejs/biome": "1.9.4",
     "@tsconfig/node-lts": "22.0.1",
@@ -73,7 +72,7 @@
     "lint-staged": "15.3.0",
     "prettier": "3.4.2",
     "simple-git-hooks": "2.11.1",
-    "typescript": "5.7.2",
+    "typescript": "5.7.3",
     "zx": "8.3.0"
   },
   "packageManager": "pnpm@9.15.3"
