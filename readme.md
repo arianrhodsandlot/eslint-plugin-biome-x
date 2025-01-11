@@ -13,6 +13,7 @@
 `eslint-plugin-biome-x` is an ESLint plugin to integrate [Biome](https://biomejs.dev/) into [ESLint](https://eslint.org/).
 
 ## Screenshot
+![screenshot](docs/images/screenshot/screenshot.png)
 
 ## Motivation
 Biome is considered as a replacement for ESLint and Prettier, but in real world projects, ESLint is still widely used, and there are still a lot of rules provided by ESLint and its plugins that are not available in Biome.
