@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-biome-x",
-  "description": "An ESLint plugin to integrate Biome into ESLint",
+  "description": "an ESLint plugin that integrates Biome with ESLint",
   "keywords": [
     "biome",
     "biomejs",
