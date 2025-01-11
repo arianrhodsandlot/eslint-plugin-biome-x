@@ -1,4 +1,6 @@
 import { configs } from './configs/index.ts'
 import { plugin } from './plugin.ts'
 
-export default { ...plugin, configs }
+const eslintPluginBiomeX = { ...plugin, configs }
+
+export default eslintPluginBiomeX

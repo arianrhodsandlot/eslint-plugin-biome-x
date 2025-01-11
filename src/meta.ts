@@ -1,4 +1,5 @@
-export const meta = {
+import type { ESLint } from 'eslint'
+
+export const meta: NonNullable<ESLint.ObjectMetaProperties['meta']> = {
   name: 'eslint-plugin-biome-x',
-  version: '0.1.0',
 }
