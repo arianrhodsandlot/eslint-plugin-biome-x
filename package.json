@@ -23,9 +23,14 @@
   },
   "type": "module",
   "exports": {
-    "types": "./dist/types/index.d.ts",
-    "import": "./dist/eslint-plugin-biome-x.mjs",
-    "require": "./dist/eslint-plugin-biome-x.cjs"
+    "import": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/eslint-plugin-biome-x.mjs"
+    },
+    "require": {
+      "types": "./dist/types/index.d.cts",
+      "default": "./dist/eslint-plugin-biome-x.cjs"
+    }
   },
   "main": "dist/eslint-plugin-biome-x.cjs",
   "module": "dist/eslint-plugin-biome-x.mjs",
@@ -35,9 +40,9 @@
   ],
   "scripts": {
     "build": "conc npm:build:* -c auto",
-    "build:cjs": "node --run=esbuild -- src/index.cts --outfile=dist/eslint-plugin-biome-x.cjs",
+    "build:cjs": "echo \"module.exports = require('./src/index.ts').default\" | node --run=esbuild -- --outfile=dist/eslint-plugin-biome-x.cjs",
     "build:esm": "node --run=esbuild -- src/index.ts --format=esm --outfile=dist/eslint-plugin-biome-x.mjs",
-    "build:types": "tsc --project tsconfig.src.json",
+    "build:types": "tsc --project tsconfig.src.json && sed 's/export default/export =/g' dist/types/index.d.ts > dist/types/index.d.cts",
     "dev": "conc npm:dev:* -c auto",
     "dev:cjs": "node --run=build:cjs -- --watch",
     "dev:esm": "node --run=build:esm -- --watch",
@@ -61,7 +66,7 @@
     "@biomejs/wasm-nodejs": "1.9.4",
     "cosmiconfig": "9.0.0",
     "es-toolkit": "1.31.0",
-    "eslint-config-prettier": "9.1.0",
+    "eslint-config-prettier": "10.0.1",
     "prettier-linter-helpers": "1.0.0"
   },
   "devDependencies": {
@@ -70,7 +75,7 @@
     "@biomejs/biome": "1.9.4",
     "@tsconfig/node-lts": "22.0.1",
     "@types/eslint-config-prettier": "6.11.3",
-    "@types/node": "22.10.5",
+    "@types/node": "22.10.6",
     "concurrently": "9.1.2",
     "esbuild": "0.24.2",
     "eslint": "9.18.0",
@@ -84,5 +89,5 @@
   "peerDependencies": {
     "eslint": ">=8.0.0"
   },
-  "packageManager": "pnpm@9.15.3"
+  "packageManager": "pnpm@9.15.4"
 }
