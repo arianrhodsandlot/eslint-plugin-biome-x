@@ -44,7 +44,7 @@ describe('plugin', () => {
   })
 
   test('autofix format issues', async () => {
-    await Promise.allSettled([$`eslint files-eslint --fix -c eslint.config.js`, runBiomeFormat('files-biome')])
+    await Promise.allSettled([$`eslint files-eslint --fix -c eslint.config.ts`, runBiomeFormat('files-biome')])
     for (const fileName of await fs.readdir('files-eslint')) {
       const [eslintFile, biomeFile] = await Promise.all(
         directories.map((directory) => fs.readFile(path.join(directory, fileName), 'utf8')),
@@ -55,7 +55,7 @@ describe('plugin', () => {
 
   test('print lint errors', async () => {
     const [eslintResults, biomeResults] = await Promise.allSettled([
-      $$`eslint files-eslint -c eslint.config.js --quiet --no-inline-config`,
+      $$`eslint files-eslint -c eslint.config.ts --quiet --no-inline-config`,
       $$`biome lint files-biome --max-diagnostics=none`,
     ])
     assert.ok('reason' in eslintResults && 'reason' in biomeResults)
