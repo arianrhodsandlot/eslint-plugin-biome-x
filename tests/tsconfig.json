@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "composite": true,
+    "declaration": true,
+    "emitDeclarationOnly": true
+  },
+  "extends": "@tsconfig/node-lts",
+  "include": [".", "../src"]
+}

@@ -17,7 +17,7 @@
 ## Motivation
 While Biome is considered a replacement for ESLint and Prettier, ESLint remains widely used in real-world projects. Many ESLint rules and plugin rules are not yet available in Biome.
 
-It's possible to use both Biome and ESLint in a project, but this can lead to confusion due to setting up multiple lint processes for CI/Git hooks or multiple linter plugins in the editor.
+It's possible to use both Biome and ESLint in a project when you want to adopt Biome, but this can lead to confusion due to setting up multiple lint processes for CI/Git hooks or multiple linter plugins in the editor.
 
 With `eslint-plugin-biome-x`, you can keep using ESLint and get unified suggestions from Biome through ESLint rules, similar to what `eslint-plugin-prettier` did for Prettier.
 
@@ -33,9 +33,7 @@ We use ESM format to demonstrate the usage, but if your project does not specify
 ```js
 import eslintPluginBiomeX from 'eslint-plugin-biome-x'
 
-export default [
-  eslintPluginBiomeX.configs.recommended
-]
+export default [eslintPluginBiomeX.configs.recommended]
 ```
 
 ### Legacy config ([`.eslintrc.js`](https://eslint.org/docs/latest/use/configure/configuration-files-deprecated), not recommended as it has been deprecated since ESLint 9.0.0)
@@ -60,27 +58,43 @@ If the default configuration doesn't fit your needs, you can configure `eslint-p
   ```
 - `settings['biome-x']` field in the ESLint config file
   ```js
-  export default [{
-    settings: {
-      'biome-x': {
-        biomeConfig: { /** your configuation goes here */ }
-      }
-    }
-  }]
+  export default [
+    {
+      settings: {
+        'biome-x': {
+          biomeConfig: {
+            /** your configuation goes here */
+          },
+        },
+      },
+    },
+  ]
   ```
 - Rule options
   ```js
   import eslintPluginBiomeX from 'eslint-plugin-biome-x'
 
-  export default [{
-    plugins: {
-      'biome-x': eslintPluginBiomeX,
-    }
-    rules: {
-      'biome-x/format': ['warn', { /** your configuation goes here */ }]
-      'biome-x/lint': ['error', { /** your configuration goes here and it can be different from above */ }]
-    }
-  }]
+  export default [
+    {
+      plugins: {
+        'biome-x': eslintPluginBiomeX,
+      },
+      rules: {
+        'biome-x/format': [
+          'warn',
+          {
+            /** your configuation goes here */
+          },
+        ],
+        'biome-x/lint': [
+          'error',
+          {
+            /** your configuration goes here and it can be different from above */
+          },
+        ],
+      },
+    },
+  ]
   ```
 
 You can find the configuration structure in the [Biome configuration reference](https://biomejs.dev/reference/configuration/).
@@ -134,20 +148,22 @@ You can find the configuration structure in the [Biome configuration reference](
   Example:
   ```js
   // eslint.config.js
-  import eslintPluginBiomeX from 'eslint-plugin-biome-x'
   import { Biome } from '@biomejs/js-api'
   import module from '@biomejs/wasm-nodejs'
+  import eslintPluginBiomeX from 'eslint-plugin-biome-x'
 
   const biome = await Biome.create({})
-  biome.applyConfiguration({ /** your custom configuation */ })
+  biome.applyConfiguration({
+    /** your custom configuation */
+  })
 
   export default [
     eslintPluginBiomeX.configs.recommended,
     {
       settings: {
-        'biome-x': { biomeInstance: biome }
-      }
-    }
+        'biome-x': { biomeInstance: biome },
+      },
+    },
   ]
   ```
 

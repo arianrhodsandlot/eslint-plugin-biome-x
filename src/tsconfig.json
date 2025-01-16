@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "composite": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "noImplicitAny": false,
+    "outDir": "../dist/types"
+  },
+  "extends": "@tsconfig/node-lts"
+}

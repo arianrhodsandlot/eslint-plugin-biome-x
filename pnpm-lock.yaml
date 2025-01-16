@@ -28,11 +28,11 @@ importers:
         version: 1.0.0
     devDependencies:
       '@arianrhodsandlot/eslint-config':
-        specifier: 0.16.8
-        version: 0.16.8(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
+        specifier: 0.17.1
+        version: 0.17.1(@biomejs/wasm-nodejs@1.9.4)(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
       '@arianrhodsandlot/release-kit':
-        specifier: 0.1.5
-        version: 0.1.5
+        specifier: 0.1.6
+        version: 0.1.6
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
@@ -43,8 +43,8 @@ importers:
         specifier: 6.11.3
         version: 6.11.3
       '@types/node':
-        specifier: 22.10.6
-        version: 22.10.6
+        specifier: 22.10.7
+        version: 22.10.7
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -58,11 +58,8 @@ importers:
         specifier: 6.4.0
         version: 6.4.0(eslint@9.18.0(jiti@2.4.2))
       lint-staged:
-        specifier: 15.3.0
-        version: 15.3.0
-      prettier:
-        specifier: 3.4.2
-        version: 3.4.2
+        specifier: 15.4.0
+        version: 15.4.0
       simple-git-hooks:
         specifier: 2.11.1
         version: 2.11.1
@@ -83,13 +80,13 @@ packages:
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
 
-  '@arianrhodsandlot/eslint-config@0.16.8':
-    resolution: {integrity: sha512-SRO5Nvn3oO8FImNswaUP86kPgTp+DrzhbO12FYFde4fjLU0PCbOPz6QG5bUWRoXFJKYi5hyiRzSAIReRqOQnFA==}
+  '@arianrhodsandlot/eslint-config@0.17.1':
+    resolution: {integrity: sha512-ZZx/3BH1GIise/ryY6KSVOdA4FyW9RmDqI+7ggNgM9m3lkkZVkj+3OTkpdBPL9/QjNy1h4O2R08n8RvWSpO7AA==}
     peerDependencies:
       eslint: '*'
 
-  '@arianrhodsandlot/release-kit@0.1.5':
-    resolution: {integrity: sha512-CBYjarKJCf3E5L/XtTi9xg7AeqUyfq86aS75EbwmWv4UPK/GI6TiuTI6gd2K0m6UWaKfjIt7flWfMnd/1eTXhA==}
+  '@arianrhodsandlot/release-kit@0.1.6':
+    resolution: {integrity: sha512-hLbgjuF946WfSxZ0cvRSe2E71Pp/HN3uur01LjlkRlK4d6U1o1b3OK1DF8i1tC92gXBlUiX/hNP/IEnZwSuGxg==}
     hasBin: true
 
   '@babel/code-frame@7.26.2':
@@ -1108,8 +1105,8 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@22.10.6':
-    resolution: {integrity: sha512-qNiuwC4ZDAUNcY47xgaSuS92cjf8JbSUoaKS77bmLG1rU7MlATVSiw/IlrjtIyyskXBZ8KkNfjK/P5na7rgXbQ==}
+  '@types/node@22.10.7':
+    resolution: {integrity: sha512-V09KvXxFiutGp6B7XkpaDXlNadZxrzajcY50EuoLIpQ6WWYCSvf19lVIazzfIzQvhUN2HjX12spLojTnhuKlGg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -1515,8 +1512,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.82:
-    resolution: {integrity: sha512-Zq16uk1hfQhyGx5GpwPAYDwddJuSGhtRhgOA2mCxANYaDT79nAeGnaXogMGng4KqLaJUVnOnuL0+TDop9nLOiA==}
+  electron-to-chromium@1.5.83:
+    resolution: {integrity: sha512-LcUDPqSt+V0QmI47XLzZrz5OqILSMGsPFkDYus22rIbgorSvBYEFqq854ltTmUdHkY92FSdAAvsh4jWEULMdfQ==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -1618,14 +1615,13 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-config-prettier@9.1.0:
-    resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
-    hasBin: true
-    peerDependencies:
-      eslint: '>=7.0.0'
-
   eslint-import-resolver-node@0.3.9:
     resolution: {integrity: sha512-WFj2isz22JahUv+B788TlO3N6zL3nNJGU8CcZbPZvVEkBPaJdCV4vy5wyghty5ROFbCRnm132v8BScu5/1BQ8g==}
+
+  eslint-plugin-biome-x@0.2.2:
+    resolution: {integrity: sha512-2JYEkdsZyFyDCHtlEWRrK5NOzi3x8h2mJHmvhSI36hXp/n9ZTL0s3C7ERt11HNdwJM2Jcy13+glnb50iJha1Lg==}
+    peerDependencies:
+      eslint: '>=8.0.0'
 
   eslint-plugin-compat@6.0.2:
     resolution: {integrity: sha512-1ME+YfJjmOz1blH0nPZpHgjMGK4kjgEeoYqGCqoBPQ/mGu/dJzdoP0f1C8H2jcWZjzhZjAMccbM/VdXhPORIfA==}
@@ -2346,8 +2342,8 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lint-staged@15.3.0:
-    resolution: {integrity: sha512-vHFahytLoF2enJklgtOtCtIjZrKD/LoxlaUusd5nh7dWv/dkKQJY74ndFSzxCdv7g0ueGg1ORgTSt4Y9LPZn9A==}
+  lint-staged@15.4.0:
+    resolution: {integrity: sha512-UdODqEZiQimd7rCzZ2vqFuELRNUda3mdv7M93jhE4SmDiqAj/w/msvwKgagH23jv2iCPw6Q5m+ltX4VlHvp2LQ==}
     engines: {node: '>=18.12.0'}
     hasBin: true
 
@@ -3365,8 +3361,9 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.8
       '@jridgewell/trace-mapping': 0.3.25
 
-  '@arianrhodsandlot/eslint-config@0.16.8(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)':
+  '@arianrhodsandlot/eslint-config@0.17.1(@biomejs/wasm-nodejs@1.9.4)(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)':
     dependencies:
+      '@biomejs/js-api': 0.7.1(@biomejs/wasm-nodejs@1.9.4)
       '@eslint-community/eslint-plugin-eslint-comments': 4.4.1(eslint@9.18.0(jiti@2.4.2))
       '@eslint-react/eslint-plugin': 1.23.2(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
       '@eslint/compat': 1.2.5(eslint@9.18.0(jiti@2.4.2))
@@ -3377,7 +3374,8 @@ snapshots:
       '@intlify/eslint-plugin-vue-i18n': 3.2.0(eslint@9.18.0(jiti@2.4.2))
       '@next/eslint-plugin-next': 15.1.4
       eslint: 9.18.0(jiti@2.4.2)
-      eslint-config-prettier: 9.1.0(eslint@9.18.0(jiti@2.4.2))
+      eslint-config-prettier: 10.0.1(eslint@9.18.0(jiti@2.4.2))
+      eslint-plugin-biome-x: 0.2.2(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
       eslint-plugin-compat: 6.0.2(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-diff: 2.0.3(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-es-x: 8.4.1(eslint@9.18.0(jiti@2.4.2))
@@ -3386,7 +3384,7 @@ snapshots:
       eslint-plugin-jsx-a11y: 6.10.2(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-n: 17.15.1(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-perfectionist: 4.6.0(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
-      eslint-plugin-prettier: 5.2.2(eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
+      eslint-plugin-prettier: 5.2.2(eslint-config-prettier@10.0.1(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2)
       eslint-plugin-promise: 7.2.1(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-react-hooks: 5.1.0(eslint@9.18.0(jiti@2.4.2))
       eslint-plugin-react-refresh: 0.4.18(eslint@9.18.0(jiti@2.4.2))
@@ -3408,12 +3406,15 @@ snapshots:
       typescript-eslint: 8.20.0(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3)
       vue-eslint-parser: 9.4.3(eslint@9.18.0(jiti@2.4.2))
     transitivePeerDependencies:
+      - '@biomejs/wasm-bundler'
+      - '@biomejs/wasm-nodejs'
+      - '@biomejs/wasm-web'
       - '@types/eslint'
       - prettier
       - supports-color
       - ts-node
 
-  '@arianrhodsandlot/release-kit@0.1.5':
+  '@arianrhodsandlot/release-kit@0.1.6':
     dependencies:
       commander: 13.0.0
       es-toolkit: 1.31.0
@@ -4583,14 +4584,14 @@ snapshots:
   '@types/fs-extra@11.0.4':
     dependencies:
       '@types/jsonfile': 6.1.4
-      '@types/node': 22.10.6
+      '@types/node': 22.10.7
     optional: true
 
   '@types/json-schema@7.0.15': {}
 
   '@types/jsonfile@6.1.4':
     dependencies:
-      '@types/node': 22.10.6
+      '@types/node': 22.10.7
     optional: true
 
   '@types/mdast@4.0.4':
@@ -4599,7 +4600,7 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@22.10.6':
+  '@types/node@22.10.7':
     dependencies:
       undici-types: 6.20.0
 
@@ -4833,7 +4834,7 @@ snapshots:
   browserslist@4.24.4:
     dependencies:
       caniuse-lite: 1.0.30001692
-      electron-to-chromium: 1.5.82
+      electron-to-chromium: 1.5.83
       node-releases: 2.0.19
       update-browserslist-db: 1.1.2(browserslist@4.24.4)
 
@@ -5042,7 +5043,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.82: {}
+  electron-to-chromium@1.5.83: {}
 
   emoji-regex@10.4.0: {}
 
@@ -5198,10 +5199,6 @@ snapshots:
     dependencies:
       eslint: 9.18.0(jiti@2.4.2)
 
-  eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)):
-    dependencies:
-      eslint: 9.18.0(jiti@2.4.2)
-
   eslint-import-resolver-node@0.3.9:
     dependencies:
       debug: 3.2.7
@@ -5209,6 +5206,20 @@ snapshots:
       resolve: 1.22.10
     transitivePeerDependencies:
       - supports-color
+
+  eslint-plugin-biome-x@0.2.2(eslint@9.18.0(jiti@2.4.2))(typescript@5.7.3):
+    dependencies:
+      '@biomejs/js-api': 0.7.1(@biomejs/wasm-nodejs@1.9.4)
+      '@biomejs/wasm-nodejs': 1.9.4
+      cosmiconfig: 9.0.0(typescript@5.7.3)
+      es-toolkit: 1.31.0
+      eslint: 9.18.0(jiti@2.4.2)
+      eslint-config-prettier: 10.0.1(eslint@9.18.0(jiti@2.4.2))
+      prettier-linter-helpers: 1.0.0
+    transitivePeerDependencies:
+      - '@biomejs/wasm-bundler'
+      - '@biomejs/wasm-web'
+      - typescript
 
   eslint-plugin-compat@6.0.2(eslint@9.18.0(jiti@2.4.2)):
     dependencies:
@@ -5324,14 +5335,14 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-prettier@5.2.2(eslint-config-prettier@9.1.0(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2):
+  eslint-plugin-prettier@5.2.2(eslint-config-prettier@10.0.1(eslint@9.18.0(jiti@2.4.2)))(eslint@9.18.0(jiti@2.4.2))(prettier@3.4.2):
     dependencies:
       eslint: 9.18.0(jiti@2.4.2)
       prettier: 3.4.2
       prettier-linter-helpers: 1.0.0
       synckit: 0.9.2
     optionalDependencies:
-      eslint-config-prettier: 9.1.0(eslint@9.18.0(jiti@2.4.2))
+      eslint-config-prettier: 10.0.1(eslint@9.18.0(jiti@2.4.2))
 
   eslint-plugin-promise@7.2.1(eslint@9.18.0(jiti@2.4.2)):
     dependencies:
@@ -6117,7 +6128,7 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
-  lint-staged@15.3.0:
+  lint-staged@15.4.0:
     dependencies:
       chalk: 5.4.1
       commander: 12.1.0
@@ -7387,4 +7398,4 @@ snapshots:
   zx@8.3.0:
     optionalDependencies:
       '@types/fs-extra': 11.0.4
-      '@types/node': 22.10.6
+      '@types/node': 22.10.7
