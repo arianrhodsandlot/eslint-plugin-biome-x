@@ -6,6 +6,7 @@ import { pluginName } from '../constants.ts'
 import { getValidFilePath } from './utils.ts'
 
 const spacer = process.env.VSCODE_PID ? '\n' : ' '
+const textEncoder = new TextEncoder()
 
 function defaultDiagnosticFormatter(diagnostic: Diagnostic) {
   if (!diagnostic.category) {
@@ -25,7 +26,7 @@ function defaultDiagnosticFormatter(diagnostic: Diagnostic) {
   return message
 }
 
-function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic) {
+function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic, indeciesMap) {
   const sourceCode = context.sourceCode ?? context.getSourceCode()
 
   const { category, location } = diagnostic
@@ -35,12 +36,46 @@ function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic
 
   const formatDiagnostics = context.settings[pluginName]?.diagnosticFormatter || defaultDiagnosticFormatter
   const message = formatDiagnostics(diagnostic)
-  const [start, end] = location.span.map((index) => sourceCode.getLocFromIndex(index))
+  const [start, end] = location.span.map((biomeIndex) => sourceCode.getLocFromIndex(indeciesMap[biomeIndex]))
+
   context.report({
     data: { message },
     loc: { end, start },
     messageId: 'lint',
   })
+}
+
+function buildIndeciesMap(text: string) {
+  const charMaps: { biomeIndicies: number[]; eslintIndices: number[] }[] = []
+  let eslintIndex = 0
+  let biomeIndex = 0
+  const textArray = [...text]
+  for (const char of textArray) {
+    const bytes = textEncoder.encode(char)
+    const map: { biomeIndicies: number[]; eslintIndices: number[] } = { biomeIndicies: [], eslintIndices: [] }
+    charMaps.push(map)
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < char.length; i += 1) {
+      map.eslintIndices.push(eslintIndex)
+      eslintIndex += 1
+    }
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < bytes.length; i += 1) {
+      map.biomeIndicies.push(biomeIndex)
+      biomeIndex += 1
+    }
+  }
+
+  const indeciesMap = {}
+  for (const {
+    biomeIndicies,
+    eslintIndices: [eslintIndex],
+  } of charMaps) {
+    for (const biomeIndex of biomeIndicies) {
+      indeciesMap[biomeIndex] = eslintIndex
+    }
+  }
+  return indeciesMap
 }
 
 export const lint: Rule.RuleModule = {
@@ -58,12 +93,13 @@ export const lint: Rule.RuleModule = {
 
     return {
       Program() {
+        const indeciesMap = buildIndeciesMap(sourceCode.text)
         const { diagnostics } = biome.lintContent(sourceCode.text, {
           filePath: getValidFilePath(filepath),
         })
 
         for (const diagnostic of diagnostics) {
-          reportBiomeDiagnostic(context, diagnostic)
+          reportBiomeDiagnostic(context, diagnostic, indeciesMap)
         }
       },
     }
