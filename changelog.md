@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3] - 2025-01-17
+### Fixed
+- Fix error positions of non ascii code
+- Add default parserOptions for legacy config so it can work out-of-the-box
+
 ## [0.2.2] - 2025-01-15
 ### Fixed
 - Fix the legacy config
@@ -28,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
+[0.2.3]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.1.0...v0.2.0
