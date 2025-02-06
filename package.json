@@ -65,7 +65,7 @@
     "@biomejs/js-api": "0.7.1",
     "@biomejs/wasm-nodejs": "1.9.4",
     "cosmiconfig": "9.0.0",
-    "es-toolkit": "1.31.0",
+    "es-toolkit": "1.32.0",
     "eslint-config-prettier": "10.0.1",
     "prettier-linter-helpers": "1.0.0"
   },
@@ -75,18 +75,18 @@
     "@biomejs/biome": "1.9.4",
     "@tsconfig/node-lts": "22.0.1",
     "@types/eslint-config-prettier": "6.11.3",
-    "@types/node": "22.10.7",
+    "@types/node": "22.13.1",
     "concurrently": "9.1.2",
     "esbuild": "0.24.2",
-    "eslint": "9.18.0",
+    "eslint": "9.19.0",
     "eslint-plugin-eslint-plugin": "6.4.0",
-    "lint-staged": "15.4.1",
+    "lint-staged": "15.4.3",
     "simple-git-hooks": "2.11.1",
     "typescript": "5.7.3",
-    "zx": "8.3.0"
+    "zx": "8.3.2"
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"
   },
-  "packageManager": "pnpm@9.15.4"
+  "packageManager": "pnpm@10.2.0"
 }
