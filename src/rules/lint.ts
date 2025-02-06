@@ -34,6 +34,10 @@ function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic
     return
   }
 
+  if (location.span.some((biomeIndex) => !(`${biomeIndex}` in indeciesMap))) {
+    return
+  }
+
   const formatDiagnostics = context.settings[pluginName]?.diagnosticFormatter || defaultDiagnosticFormatter
   const message = formatDiagnostics(diagnostic)
   const [start, end] = location.span.map((biomeIndex) => sourceCode.getLocFromIndex(indeciesMap[biomeIndex]))
