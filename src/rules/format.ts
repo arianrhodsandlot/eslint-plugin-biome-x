@@ -42,7 +42,8 @@ export const format: Rule.RuleModule = {
     const sourceCode = context.sourceCode ?? context.getSourceCode()
     const filepath = context.filename ?? context.getFilename()
 
-    const biome = getBiome(context.settings[pluginName], context.options)
+    const setting: any = context.settings[pluginName]
+    const biome = getBiome(setting, context.options)
 
     return {
       Program() {

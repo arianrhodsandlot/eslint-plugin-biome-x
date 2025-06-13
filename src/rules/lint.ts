@@ -38,7 +38,8 @@ function reportBiomeDiagnostic(context: Rule.RuleContext, diagnostic: Diagnostic
     return
   }
 
-  const formatDiagnostics = context.settings[pluginName]?.diagnosticFormatter || defaultDiagnosticFormatter
+  const setting: any = context.settings[pluginName]
+  const formatDiagnostics = setting?.diagnosticFormatter || defaultDiagnosticFormatter
   const message = formatDiagnostics(diagnostic)
   const [start, end] = location.span.map((biomeIndex) => sourceCode.getLocFromIndex(indeciesMap[biomeIndex]))
 
@@ -93,7 +94,8 @@ export const lint: Rule.RuleModule = {
     const sourceCode = context.sourceCode ?? context.getSourceCode()
     const filepath = context.filename ?? context.getFilename()
 
-    const biome = getBiome(context.settings[pluginName], context.options)
+    const setting: any = context.settings[pluginName]
+    const biome = getBiome(setting, context.options)
 
     return {
       Program() {
