@@ -50,9 +50,7 @@
     "eslint": "eslint --no-warn-ignored",
     "lint": "node --run=eslint -- src",
     "prepare": "simple-git-hooks",
-    "test": "conc npm:test:* -c auto",
-    "test:e2e": "node --no-warnings --test tests/e2e/**/*.test.ts",
-    "test:unit": "node --no-warnings --test tests/unit/**/*.test.ts"
+    "test": "node --test tests/unit/**/*.test.ts"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
@@ -62,33 +60,33 @@
     "package.json": "pnpm dlx sort-package-json"
   },
   "dependencies": {
-    "@biomejs/js-api": "^0.7.1",
-    "@biomejs/wasm-nodejs": "^1.9.4",
+    "@biomejs/js-api": "^2.0.3",
+    "@biomejs/wasm-nodejs": "^2.1.2",
     "cosmiconfig": "^9.0.0",
-    "es-toolkit": "^1.39.3",
-    "eslint-config-prettier": "^10.1.5",
+    "es-toolkit": "^1.39.7",
+    "eslint-config-prettier": "^10.1.8",
     "prettier-linter-helpers": "^1.0.0"
   },
   "devDependencies": {
     "@arianrhodsandlot/eslint-config": "0.19.0",
     "@arianrhodsandlot/release-kit": "0.1.7",
-    "@biomejs/biome": "1.9.4",
-    "@tsconfig/node-lts": "22.0.1",
+    "@biomejs/biome": "2.1.2",
+    "@tsconfig/node-lts": "22.0.2",
     "@types/eslint-config-prettier": "6.11.3",
-    "@types/node": "24.0.1",
-    "concurrently": "9.1.2",
-    "esbuild": "0.25.5",
-    "eslint": "9.28.0",
-    "eslint-plugin-eslint-plugin": "6.4.0",
-    "lint-staged": "16.1.0",
+    "@types/node": "24.1.0",
+    "concurrently": "9.2.0",
+    "esbuild": "0.25.8",
+    "eslint": "9.31.0",
+    "eslint-plugin-eslint-plugin": "6.5.0",
+    "lint-staged": "16.1.2",
     "simple-git-hooks": "2.13.0",
     "typescript": "5.8.3",
-    "zx": "8.5.5"
+    "zx": "8.7.1"
   },
   "peerDependencies": {
     "eslint": ">=8.0.0"
   },
-  "packageManager": "pnpm@10.12.1",
+  "packageManager": "pnpm@10.13.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@biomejs/biome",

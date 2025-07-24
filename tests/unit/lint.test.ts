@@ -15,8 +15,8 @@ describe('lint', () => {
 
       invalid: [
         {
-          code: 'var boolean = true; console.info(boolean)',
-          errors: [{ column: 1, endColumn: 19, endLine: 1, line: 1, messageId: 'lint' }],
+          code: 'var boolean = true;',
+          errors: [{ column: 5, endColumn: 12, endLine: 1, line: 1, messageId: 'lint' }],
         },
 
         // non ascii code
@@ -32,9 +32,9 @@ console.log(1)
 
           `,
           errors: [
-            { column: 1, endColumn: 12, endLine: 2, line: 2, messageId: 'lint' },
-            { column: 1, endColumn: 24, endLine: 4, line: 4, messageId: 'lint' },
-            { column: 5, endColumn: 28, endLine: 8, line: 8, messageId: 'lint' },
+            { column: 5, endColumn: 6, endLine: 2, line: 2, messageId: 'lint' },
+            { column: 5, endColumn: 6, endLine: 4, line: 4, messageId: 'lint' },
+            { column: 9, endColumn: 10, endLine: 8, line: 8, messageId: 'lint' },
           ],
         },
       ],

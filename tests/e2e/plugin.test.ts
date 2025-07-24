@@ -21,8 +21,8 @@ describe('plugin', () => {
     cd(import.meta.dirname)
     const files = await globby('files/*')
     const testFileUrls = [
-      'https://cdn.jsdelivr.net/npm/lodash@latest/core.js',
-      'https://cdn.jsdelivr.net/npm/react@latest/cjs/react.production.js',
+      'https://cdn.jsdelivr.net/npm/lodash@4.17.21/core.js',
+      'https://cdn.jsdelivr.net/npm/react@19.1.0/cjs/react.production.js',
     ]
     if (files.length !== testFileUrls.length) {
       cd(import.meta.dirname)
@@ -55,7 +55,7 @@ describe('plugin', () => {
 
   test('print lint errors', async () => {
     const [eslintResults, biomeResults] = await Promise.allSettled([
-      $$`eslint files-eslint -c eslint.config.ts --quiet --no-inline-config`,
+      $$`eslint files-eslint -c eslint.config.ts --quiet --no-inline-config --flag=unstable_native_nodejs_ts_config`,
       $$`biome lint files-biome --max-diagnostics=none`,
     ])
     assert.ok('reason' in eslintResults && 'reason' in biomeResults)

@@ -43,11 +43,11 @@ export const format: Rule.RuleModule = {
     const filepath = context.filename ?? context.getFilename()
 
     const setting: any = context.settings[pluginName]
-    const biome = getBiome(setting, context.options)
+    const { biome, projectKey } = getBiome(setting, context.options)
 
     return {
       Program() {
-        const { content: formatedText } = biome.formatContent(sourceCode.text, {
+        const { content: formatedText } = biome.formatContent(projectKey, sourceCode.text, {
           filePath: getValidFilePath(filepath),
         })
 

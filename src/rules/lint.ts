@@ -95,12 +95,12 @@ export const lint: Rule.RuleModule = {
     const filepath = context.filename ?? context.getFilename()
 
     const setting: any = context.settings[pluginName]
-    const biome = getBiome(setting, context.options)
+    const { biome, projectKey } = getBiome(setting, context.options)
 
     return {
       Program() {
         const indeciesMap = buildIndeciesMap(sourceCode.text)
-        const { diagnostics } = biome.lintContent(sourceCode.text, {
+        const { diagnostics } = biome.lintContent(projectKey, sourceCode.text, {
           filePath: getValidFilePath(filepath),
         })
 
