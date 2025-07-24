@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-07-24
+### Added
+- Upgrade biome
+### Fixed
+- Suppress type errors
+
 ## [0.2.5] - 2025-02-06
 ### Fixed
 - Fix errors caused by invalid diagnostic positions
@@ -41,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Initial release
 
+[0.3.0]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.5...v0.3.0
 [0.2.5]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.3...v0.2.4
 [0.2.3]: https://github.com/arianrhodsandlot/eslint-plugin-biome-x/compare/v0.2.2...v0.2.3
